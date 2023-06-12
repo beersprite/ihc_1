@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.ihc_1.ui.gallery.GalleryFragment"
+        android:name="com.example.ihc_1.ui.sumactivity.SumActivityFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_sum_activity" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.ihc_1.ui.slideshow.SlideshowFragment"
+        android:name="com.example.ihc_1.ui.copyactivity.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_copy_activity" />
 </navigation>
