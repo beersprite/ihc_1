@@ -1,9 +1,12 @@
 package com.example.ihc_1.ui.copyactivity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -22,17 +25,31 @@ class CopyFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
+        val copyViewModel =
                 ViewModelProvider(this).get(CopyFragmentViewModel::class.java)
 
         _binding = FragmentCopyActivityBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
+        copyViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        binding.sendButton.setOnClickListener {
+            this.sendText(requireContext())
+        }
+
         return root
+    }
+
+    private fun sendText(context: Context){
+        val intent = Intent(context, PasteActivity::class.java)
+
+        var currentText = binding.inputTextCopy.text.toString()
+        intent.putExtra("sent_text_id", currentText)
+        println("CLICK")
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

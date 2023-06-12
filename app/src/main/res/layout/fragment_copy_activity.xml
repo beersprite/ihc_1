@@ -7,7 +7,7 @@
     tools:context=".ui.copyactivity.CopyFragment">
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/input_text_copy"
         android:layout_width="208dp"
         android:layout_height="0dp"
         android:layout_marginBottom="43dp"
@@ -16,7 +16,7 @@
         android:hint="@string/input_text"
         android:inputType="textMultiLine"
         android:maxLength="50"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/send_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_slideshow" />
@@ -29,13 +29,13 @@
         android:layout_marginBottom="35dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/input_text_copy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/send_button"
         android:layout_width="147dp"
         android:layout_height="88dp"
         android:layout_marginBottom="178dp"
@@ -45,5 +45,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/input_text_copy" />
 </androidx.constraintlayout.widget.ConstraintLayout>
