@@ -1,4 +1,4 @@
-package com.example.ihc_1.ui.lightsensor
+package com.example.ihc_1.ui.sensors
 
 import androidx.lifecycle.ViewModel
 

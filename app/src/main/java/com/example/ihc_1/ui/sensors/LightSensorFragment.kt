@@ -1,18 +1,21 @@
-package com.example.ihc_1.ui.lightsensor
+package com.example.ihc_1.ui.sensors
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.ihc_1.databinding.FragmentLightSensorBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 
 class LightSensorFragment : Fragment(), SensorEventListener {
@@ -23,23 +26,12 @@ class LightSensorFragment : Fragment(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
 
     private lateinit var sensorLight: Sensor
-//    private lateinit var lightValue: TextView
-
     private lateinit var sensorTemperature: Sensor
-//    private lateinit var temperatureValue: TextView
-
     private lateinit var sensorPressure: Sensor
-//    private lateinit var pressureValue: TextView
 
-//    private lateinit var sensorGyro: Sensor
-//    private lateinit var gyroscopeValue: TextView // 3 values
-//    private lateinit var sensorMagnetometer: Sensor
-//    private lateinit var magnetometerValue: TextView // 3 values
-
-
-//    var sensorX: Float = 0.0f
-//    var sensorY: Float = 0.0f
-//    var sensorZ: Float = 0.0f
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var latitudeValue : Double = 0.0
+    private var longitudeValue : Double = 0.0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +45,12 @@ class LightSensorFragment : Fragment(), SensorEventListener {
 
         setupSensors()
         setupStrings()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        binding.gpsButton.setOnClickListener {
+            onClickGPSButton()
+        }
 
         return root
     }
@@ -99,4 +97,19 @@ class LightSensorFragment : Fragment(), SensorEventListener {
         binding.temperatureTextview.setText("Ambient Temperature\n" + 0.0 + " C")
     }
 
+    @SuppressLint("MissingPermission")
+    private fun getLastPosition() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    latitudeValue =  location.latitude
+                    longitudeValue = location.longitude
+                }
+            }
+    }
+
+    private fun onClickGPSButton() {
+        getLastPosition()
+        Toast.makeText(activity?.applicationContext, "Latitude: $latitudeValue\nLongitude: $longitudeValue", Toast.LENGTH_LONG).show()
+    }
 }

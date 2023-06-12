@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_speedometer" />
     <fragment
         android:id="@+id/nav_lightsensor"
-        android:name="com.example.ihc_1.ui.lightsensor.LightSensorFragment"
+        android:name="com.example.ihc_1.ui.sensors.LightSensorFragment"
         android:label="@string/menu_lightsensor"
         tools:layout="@layout/fragment_light_sensor" />
 </navigation>
