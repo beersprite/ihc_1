@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.ihc_1.databinding.FragmentCopyActivityBinding
 
-class SlideshowFragment : Fragment() {
+class CopyFragment : Fragment() {
 
     private var _binding: FragmentCopyActivityBinding? = null
 
@@ -23,7 +23,7 @@ class SlideshowFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         val slideshowViewModel =
-                ViewModelProvider(this).get(SlideshowViewModel::class.java)
+                ViewModelProvider(this).get(CopyFragmentViewModel::class.java)
 
         _binding = FragmentCopyActivityBinding.inflate(inflater, container, false)
         val root: View = binding.root
