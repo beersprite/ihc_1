@@ -11,6 +11,7 @@
     <string name="menu_sum">Sum</string>
     <string name="menu_copy">Copy</string>
     <string name="menu_speedometer">Speedometer</string>
+    <string name="menu_lightsensor">Light Sensor</string>
 
     <string name="input_number">Enter a Number</string>
     <string name="sum_button">Sum!</string>
@@ -18,4 +19,5 @@
     <string name="input_text">Enter a Message...</string>
     <string name="send_button">Send</string>
     <string name="back_button">Back</string>
+
 </resources>

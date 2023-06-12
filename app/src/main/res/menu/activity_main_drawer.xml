@@ -20,5 +20,9 @@
             android:id="@+id/nav_speedometer"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/menu_speedometer" />
+        <item
+            android:id="@+id/nav_lightsensor"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="@string/menu_lightsensor" />
     </group>
 </menu>
