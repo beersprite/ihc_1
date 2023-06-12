@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ihc_1</string>
+    <string name="app_name">INF01043 - Trabalho Prático 1</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_sum">Sum</string>
     <string name="menu_copy">Copy</string>
+    <string name="menu_speedometer">Speedometer</string>
 
     <string name="input_number">Enter a Number</string>
     <string name="sum_button">Sum!</string>
