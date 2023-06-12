@@ -14,38 +14,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.ihc_1.R
+import com.example.ihc_1.databinding.FragmentCopyActivityBinding
 import com.example.ihc_1.databinding.FragmentSpeedometerBinding
 import com.example.ihc_1.databinding.FragmentSumActivityBinding
+import com.example.ihc_1.ui.copyactivity.CopyFragmentViewModel
 
 class SpeedometerFragment : Fragment(), SensorEventListener {
 
     private var _binding: FragmentSpeedometerBinding? = null
     private val binding get() = _binding!!
-    companion object {
-        fun newInstance() = SpeedometerFragment()
-    }
-
-    private lateinit var viewModel: SpeedometerViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_speedometer, container, false)
+    ): View {
+        val speedometerViewModel =
+            ViewModelProvider(this).get(SpeedometerViewModel::class.java)
+
+        _binding = FragmentSpeedometerBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        var mSensorManager = SENSOR_SERVICE as SensorManager
+        var mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+        return root
     }
 
-    var mSensorManager = SENSOR_SERVICE as SensorManager
-    var mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
-    var xAxis = binding.xAxis
-    var yAxis = binding.yAxis
-    var zAxis = binding.zAxis
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SpeedometerViewModel::class.java)
-
-    }
 
     override fun onSensorChanged(event: SensorEvent?) {
         if( event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
@@ -53,9 +48,9 @@ class SpeedometerFragment : Fragment(), SensorEventListener {
             val sensorY = event.values[1]
             val sensorZ = event.values[2]
 
-            xAxis.setText(sensorX.toString())
-            yAxis.setText(sensorY.toString())
-            zAxis.setText(sensorZ.toString())
+            binding.xAxis.setText(sensorX.toString())
+            binding.yAxis.setText(sensorY.toString())
+            binding.zAxis.setText(sensorZ.toString())
 
         }
     }
