@@ -16,4 +16,5 @@
 
     <string name="input_text">Enter a Message...</string>
     <string name="send_button">Send</string>
+    <string name="back_button">Back</string>
 </resources>
