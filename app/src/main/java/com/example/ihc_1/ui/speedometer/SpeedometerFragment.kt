@@ -80,8 +80,6 @@ class SpeedometerFragment : Fragment(), SensorEventListener {
     }
 
     override fun onDestroyView() {
-        //sensorManager.unregisterListener(this)
-
         super.onDestroyView()
         _binding = null
     }
